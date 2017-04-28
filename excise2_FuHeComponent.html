@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/react-dom.js"></script>
+<script type="text/javascript" src="js/browser.min.js"></script>
+<script type="text/babel">
+	var FuHeComponent=React.createClass({
+		render:function(){
+			return <div>
+				<UserComponent/>
+				<PwdComponent/>
+				<ButtonComponent/>
+			</div>
+		}
+	});
+	var UserComponent=React.createClass({
+		render:function(){
+			return <p>
+				<span>用户名：</span>
+				<input type="text" name=""/>
+			</p>
+		}
+	});
+	var PwdComponent=React.createClass({
+		render:function(){
+			return <p>
+				<span>密码：</span>
+				<input type="password" name=""/>
+			</p>
+		}
+	});
+	var ButtonComponent=React.createClass({
+		render:function(){
+			return <p>
+				<button>注册</button>
+				<button>登录</button>
+			</p>
+		}
+	});
+	ReactDOM.render(<FuHeComponent/>,document.getElementById('example'));
+</script>
+</body>
+</html>

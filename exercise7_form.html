@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/react-dom.js"></script>
+<script type="text/javascript" src="js/browser.min.js"></script>
+<script type="text/babel">
+	var FormComponent=React.createClass({
+		getInitialState:function(){
+			return {inputTxt:'',sex:'woman',isAgree:true};
+		},
+		handleInputChange:function(event){
+			this.setState({inputTxt:event.target.value})
+		},
+		handleSelChange:function(event){
+			this.setState({sex:event.target.value})
+		},
+		handleCbxChange:function(event){
+			this.setState({isAgree:event.target.checked})
+		},
+		handleSubmit:function(event){
+			event.preventDefault();
+			console.log(this.state);
+		},
+		render:function(){
+			return <form onSubmit={this.handleSubmit}>
+				用户名：
+				<input type="text" value={this.state.inputTxt} onChange={this.handleInputChange}/>
+				<br/>
+				性别：
+				<select onChange={this.handleSelChange} value={this.state.sex}>
+					<option value="man" >男</option>
+					<option value="woman">女</option>
+				</select>
+				<br/>
+				是否同意
+				<input type="checkbox" onChange={this.handleCbxChange} checked={this.state.isAgree} />
+				<br/>
+				<button type="submit">提交</button>
+			</form>
+		}
+	})
+	ReactDOM.render(<FormComponent/>,document.getElementById('example'));
+</script>
+</body>
+</html>

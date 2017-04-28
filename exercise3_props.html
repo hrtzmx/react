@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/react-dom.js"></script>
+<script type="text/javascript" src="js/browser.min.js"></script>
+<script type="text/babel">
+	var LoginTemp=React.createClass({
+		render:function(){
+			return <div>
+				<UserLabel name="用户名"/>
+				<InputLabel tips="请输入用户名"/>
+				<br/>
+				<PwdLabel name="密码"/>
+				<InputPwd tips="请输入密码"/>
+				<br/>
+				<ResigerButton value="注册"/>
+				<LoginButton value="登录" />
+			</div>
+		}
+	});
+	var UserLabel=React.createClass({
+		render:function(){
+			return <span>{this.props.name}</span>
+		}
+	});
+	var InputLabel=React.createClass({
+		render:function(){
+			return <input type="text" placeholder={this.props.tips} name=""/>
+		}
+	});
+	var PwdLabel=React.createClass({
+		render:function(){
+			return <span>{this.props.name}</span>
+		}
+	});
+	var InputPwd=React.createClass({
+		render:function(){
+			return <input type="password" placeholder={this.props.tips} name=""/>
+		}
+	});
+	var ResigerButton=React.createClass({
+		render:function(){
+			return <button>{this.props.value}</button>
+		}
+	});
+	var LoginButton=React.createClass({
+		render:function(){
+			return <button>{this.props.value}</button>
+		}
+	});
+	ReactDOM.render(<LoginTemp/>,document.getElementById('example'));
+</script>
+</body>
+</html>

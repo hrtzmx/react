@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/react-dom.js"></script>
+<script type="text/javascript" src="js/browser.min.js"></script>
+<script type="text/babel">
+	var TestRef=React.createClass({
+		handleClick:function(){
+			var num1=parseFloat(this.refs.TextInput1.value);
+			var num2=parseFloat(this.refs.TextInput2.value);
+			console.log(num1+num2);
+		},
+		render:function(){
+			return <div>
+				<input type="text" ref="TextInput1"/>
+				<br/>
+				<input type="text" ref="TextInput2"/>
+				<br/>
+				<button onClick={this.handleClick}>求和</button>
+			</div>
+		}
+
+	})
+	ReactDOM.render(<TestRef/>,document.getElementById('example'));
+</script>
+</body>
+</html>

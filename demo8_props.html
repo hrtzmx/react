@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/react-dom.js"></script>
+<script type="text/javascript" src="js/browser.min.js"></script>
+<script type="text/babel">
+	var ButtonComponent=React.createClass({
+		handleClick:function(){
+			this.props.functionName();
+		},
+		render:function(){
+			return <button onClick={this.handleClick}> Click Me</button>
+		}
+	});
+	var MainComponent=React.createClass({
+		handleOnClick:function(){
+			console.log('这是一个测试');
+		},
+		render:function(){
+			return <div>
+				<h1>复合组件</h1>
+				<ButtonComponent functionName={this.handleOnClick}/>
+			</div>
+		}
+	});
+	ReactDOM.render(<MainComponent/>,document.getElementById('example'));
+</script>
+</body>
+</html>

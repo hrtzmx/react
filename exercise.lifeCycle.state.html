@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/react-dom.js"></script>
+<script type="text/javascript" src="js/browser.min.js"></script>
+<script type="text/babel">
+	var WheelComponent=React.createClass({
+		getInitialState:function(){
+			return {bgValue:'rgb(0,255,255)'}
+		},
+		handleWheel:function(){
+			var r=Math.floor(Math.random()*256);
+			var g=Math.floor(Math.random()*256);
+			var b=Math.floor(Math.random()*256);
+			this.setState({bgValue:'rgb('+r+','+g+','+b+')'});
+		},
+		render:function(){
+			return <div onWheel={this.handleWheel} style={{background:this.state.bgValue}}>onwheel 滚动事件</div>
+		}
+	})
+	ReactDOM.render(<WheelComponent/>,document.getElementById('example'));
+</script>
+</body>
+</html>

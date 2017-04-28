@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/react-dom.js"></script>
+<script type="text/javascript" src="js/browser.min.js"></script>
+<script type="text/babel">
+	var ToDoItem=React.createClass({
+		handleClick:function(){
+			var i=this.props.i;
+			this.props.fun(i);
+		},
+		render:function(){
+			return <div>
+				<button onClick={this.handleClick}>delete</button>
+				<span>{this.props.content}</span>
+			</div>
+		}
+	});
+	var ToDoList=React.createClass({
+		displayList:function(){
+			var del=this.props.funDel;
+			return this.props.name.map(function(content,index){
+				return <li key={index}><ToDoItem content={content} i={index} fun={del}/></li>;
+			})
+		},
+		render:function(){
+			return <ul>
+				
+					{this.displayList()}
+				
+			</ul>
+		}
+	});
+	var ToDoInput=React.createClass({
+		handleClick:function(){
+			this.props.funName(this.refs.inputTxt.value);
+		},
+		render:function(){
+			return <div>
+				<input type="text" ref="inputTxt"/>
+				<button onClick={this.handleClick}>add</button>
+			</div>
+		}
+	});
+	var ToDoBox=React.createClass({
+
+		getInitialState:function(){
+			return {inputValue:[]}
+		},
+		handleOnClick:function(result){
+			var list=this.state.inputValue;
+			list.push(result);
+			this.setState({inputValue:list});
+		},
+		deleteClick:function(i){
+			var newList=this.state.inputValue;
+			newList.splice(i,1);
+			this.setState({inputValue:newList})
+		},
+		render:function(){
+			return <div>
+				<h1>待做事项列表</h1>
+				<ToDoInput funName={this.handleOnClick}/>
+				<ToDoList name={this.state.inputValue} funDel={this.deleteClick}/>
+			</div>
+		}
+	})
+	ReactDOM.render(<ToDoBox/>,document.getElementById('example'));
+</script>
+</body>
+</html>

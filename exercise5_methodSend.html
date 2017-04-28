@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/react-dom.js"></script>
+<script type="text/javascript" src="js/browser.min.js"></script>
+<script type="text/babel">
+	var AComponent=React.createClass({
+		handleChange:function(){
+			this.props.funName(this.refs.i.value);
+		},
+		render:function(){
+			return <input type="text" ref="i" onChange={this.handleChange}/>
+		}
+	});
+	var BComponent=React.createClass({
+		handleClick:function(){
+			this.props.funName();
+		},
+		render:function(){
+			return <button onClick={this.handleClick}>取值</button>
+		}
+	});
+	var MainComponent=React.createClass({
+		getInitialState:function(){
+			return {switch:null}
+		},
+		handleOnClick:function(){
+			console.log(this.state.switch);
+		},
+		handleOnChange:function(result){
+			this.setState({switch:result});
+		},
+		render:function(){
+			return <div>
+				<AComponent funName={this.handleOnChange}/>
+				<BComponent funName={this.handleOnClick}/>
+			</div>
+		}
+	});
+	ReactDOM.render(<MainComponent/>,document.getElementById('example'));
+</script>
+</body>
+</html>

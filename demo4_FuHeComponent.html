@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/react-dom.js"></script>
+<script type="text/javascript" src="js/browser.min.js"></script>
+<script type="text/babel">
+	var FuHeComponent=React.createClass({
+		render:function(){
+			return <div>
+				<NameComponent/>
+				<LinkComponent/>
+			</div>
+		}
+	});
+	var NameComponent=React.createClass({
+		render:function(){
+			return <h1>百度</h1>
+		}
+	});
+	var LinkComponent=React.createClass({
+		render:function(){
+			return <a href="www.baidu.com">Link</a>
+		}
+	});
+	ReactDOM.render(<FuHeComponent/>,document.getElementById('example'));
+</script>
+</body>
+</html>

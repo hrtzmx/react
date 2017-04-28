@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="js/react.js"></script>
+<script type="text/javascript" src="js/react-dom.js"></script>
+<script type="text/javascript" src="js/browser.min.js"></script>
+<script type="text/babel">
+	var TestLifeCycle=React.createClass({
+		componentWillMount:function(){
+			console.log('in will mount function');
+			console.log(this.refs.inputText);
+		},
+		componentDidMount:function(){
+			console.log('in did mount function');
+			console.log(this.refs.inputText);
+		},
+		render:function(){
+			return <div><h2>life cycle</h2>
+			<input type="text" ref="inputText"/>
+			</div>
+		}
+	})
+	ReactDOM.render(<TestLifeCycle/>,document.getElementById('example'));
+</script>
+</body>
+</html>
